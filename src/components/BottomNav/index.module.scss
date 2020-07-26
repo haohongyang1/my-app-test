@@ -1,0 +1,25 @@
+.main {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  z-index: 1000;
+  height: 55px;
+  border-top: solid 1px #cdcdcd;
+  align-items: center;
+  color: #5d656b;
+  .MenuItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+  }
+  .title {
+    font-size: 12px;
+  }
+  .selected {
+    color: red;
+  }
+}

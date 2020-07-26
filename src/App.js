@@ -1,7 +1,20 @@
-import React from "react";
-
+import React, { useState } from "react";
+import IndexPage from "./pages/IndexPage";
+import CartPage from "./pages/CartPage";
+import OrderListPage from "./pages/OrderListPage";
+import UserPage from "./pages/UserPage";
+import BottomNav from "./components/BottomNav";
 function App() {
-  return <div className="App">111</div>;
+  const [activeNum, setActiveNum] = useState(0);
+  return (
+    <div className="App">
+      {activeNum === 0 && <IndexPage />}
+      {activeNum === 1 && <CartPage />}
+      {activeNum === 2 && <OrderListPage />}
+      {activeNum === 3 && <UserPage />}
+      <BottomNav activeNum={activeNum} setActiveNum={setActiveNum} />
+    </div>
+  );
 }
 
 export default App;

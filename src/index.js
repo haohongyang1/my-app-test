@@ -1,8 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom"; // 负责渲染dom ，VDOM -> DOM
 import "./index.css";
 import App from "./App";
-
+import "./static/iconfont/iconfont.css";
 ReactDOM.render(
   <React.StrictMode>
     <App />
