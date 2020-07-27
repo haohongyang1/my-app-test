@@ -5,7 +5,7 @@ import OrderListPage from "./pages/OrderListPage";
 import UserPage from "./pages/UserPage";
 import BottomNav from "./components/BottomNav";
 // import SetStatePage from "./components/Demo/SetStatePage";
-import LifeCyclePage from "./components/Demo/LifeCyclePage";
+// import LifeCyclePage from "./components/Demo/LifeCyclePage";
 
 function App() {
   const [activeNum, setActiveNum] = useState(0);
@@ -16,7 +16,7 @@ function App() {
       {activeNum === 2 && <OrderListPage />}
       {activeNum === 3 && <UserPage />}
       {/* <SetStatePage /> */}
-      <LifeCyclePage />
+      {/* <LifeCyclePage /> */}
       <BottomNav activeNum={activeNum} setActiveNum={setActiveNum} />
     </div>
   );

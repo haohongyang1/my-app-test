@@ -18,18 +18,18 @@ export default class LifeCyclePage extends Component {
     console.log("---constructor---");
   }
   //   16.4 add
-  static getDerivedStateFromProps(props, state) {
-    console.log("---getDerivedStateFromProps---");
-    const { count } = state;
-    return count > 5 ? { count: 0 } : null;
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log("---getDerivedStateFromProps---");
+  //   const { count } = state;
+  //   return count > 5 ? { count: 0 } : null;
+  // }
   //   16.4 add
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("---getSnapshotBeforeUpdate---", prevProps, prevState);
-    return {
-      msg: "我是update传递的",
-    };
-  }
+  // getSnapshotBeforeUpdate(prevProps, prevState) {
+  //   console.log("---getSnapshotBeforeUpdate---", prevProps, prevState);
+  //   return {
+  //     msg: "我是update传递的",
+  //   };
+  // }
   componentWillMount() {
     console.log("---componentWillMount---");
   }
