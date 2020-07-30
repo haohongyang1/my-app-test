@@ -1,3 +1,7 @@
+/**
+ * Redux 是一个轻量状态管理器，可以通过middleware来扩展其功能
+ */
+
 import React, { Component } from "react";
 import store from "../../store";
 
