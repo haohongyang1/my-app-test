@@ -5,24 +5,42 @@
  * getState：获取当前状态
  * middleware写法
  */
-// import { createStore, applyMiddleware } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import reducer from "./reducers";
+
 // import thunk from "redux-thunk";
 // import logger from "redux-logger";
 // import promise from "redux-promise";
 
-import { logger, thunk, promise } from "../source/my-redux/middlewares";
-import { createStore, applyMiddleware } from "../source/my-redux";
-function counterReducer(state = 0, action) {
-  console.log("state-", state);
-  switch (action.type) {
-    case "ADD":
-      return state + 1;
-    case "MINUS":
-      return state - 1;
-  }
-}
-const store = createStore(
-  counterReducer,
-  applyMiddleware(thunk, logger, promise)
-);
+// import { logger, thunk, promise } from "../source/my-redux/middlewares";
+// import { createStore, applyMiddleware } from "../source/my-redux";
+
+// combineReducers practice
+
+// function counterReducer(state = 0, action) {
+//   // console.log("state-", state);
+//   switch (action.type) {
+//     case "ADD":
+//       return state + 1;
+//     case "MINUS":
+//       return state - 1;
+//     default:
+//       return state;
+//   }
+// }
+
+// const store = createStore(counterReducer, applyMiddleware(thunk, logger, promise));
+let store = createStore(reducer);
+console.log(store.getState());
+// {
+//   counter: 0,
+//   todos: []
+// }
+
+store.dispatch({
+  type: "ADD_TODO",
+  text: "Use Redux",
+});
+console.log(store.getState());
+
 export default store;
