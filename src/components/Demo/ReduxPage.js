@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import store from "../../store/index.js";
+import store from "../../store";
+
 export default class ReduxPage extends Component {
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
-      // console.log("state发生变化了");
+      console.log("state发生变化了");
       this.forceUpdate();
     });
   }
@@ -32,11 +33,11 @@ export default class ReduxPage extends Component {
     );
   };
   render() {
-    // console.log(store);
+    // console.log(store.getState());
     return (
       <div>
         ReduxPage
-        <p>{store.getState()}</p>
+        <p>{store.getState().counter}</p>
         <button onClick={this.add}>add</button>
         <button onClick={this.asyAdd}>asyAdd</button>
         <button onClick={this.promiseMinus}>promiseMinus</button>

@@ -5,12 +5,12 @@
  * getState：获取当前状态
  * middleware写法
  */
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducer from "./reducers";
 
-// import thunk from "redux-thunk";
-// import logger from "redux-logger";
-// import promise from "redux-promise";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import promise from "redux-promise";
 
 // import { logger, thunk, promise } from "../source/my-redux/middlewares";
 // import { createStore, applyMiddleware } from "../source/my-redux";
@@ -29,9 +29,13 @@ import reducer from "./reducers";
 //   }
 // }
 
-// const store = createStore(counterReducer, applyMiddleware(thunk, logger, promise));
-let store = createStore(reducer);
-console.log(store.getState());
+// const store = createStore(
+//   counterReducer,
+//   applyMiddleware(thunk, logger, promise)
+// );
+
+let store = createStore(reducer, applyMiddleware(thunk, logger, promise));
+// console.log(store.getState());
 // {
 //   counter: 0,
 //   todos: []
