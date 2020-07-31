@@ -3,10 +3,15 @@ import ReactDOM from "react-dom"; // 负责渲染dom ，VDOM -> DOM
 import "./index.css";
 import App from "./App";
 import "./static/iconfont/iconfont.css";
+import { Provider } from "react-redux";
+import store from "./store";
 ReactDOM.render(
-  <React.StrictMode>
+  // React严格模式，会导致执行两次render，具体见官网
+  // <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 

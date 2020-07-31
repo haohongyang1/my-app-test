@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 // 装饰器写法
 @connect(
-  // 1-----mapStateToProps 把state映射到props上
-  ({ count }) => ({ count }),
+  // 1-----mapStateToProps 把state映射到props上，这里的变量是你定义的reducer的函数名
+  ({ counter }) => ({ counter }),
   //   2------mapDispatchToProps 把dispatch映射到props
   // {
   //   add: () => ({ type: "ADD" }),
@@ -32,11 +32,12 @@ import { bindActionCreators } from "redux";
 )
 class ReactReduxPage extends Component {
   render() {
-    const { num, add } = this.props;
+    const { counter, add } = this.props;
+    console.log(counter);
     return (
       <div>
         <h3>ReactReduxPage</h3>
-        <p>{num}</p>
+        <p>{counter}</p>
         <button onClick={add}>add</button>
       </div>
     );
