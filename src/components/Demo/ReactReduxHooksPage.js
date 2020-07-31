@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 export default function ReactReduxHooksPage(props) {
   const counter = useSelector(({ counter }) => counter); // 获取
   const dispatch = useDispatch();
-  //   使用useCallback把方法缓存起来，为什么要缓存起来
+  //   使用useCallback把方法缓存起来，为什么要缓存起来 TODO
 
   const add = useCallback(() => {
     console.log("ADD---");
