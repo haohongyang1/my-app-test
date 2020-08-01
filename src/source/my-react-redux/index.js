@@ -48,4 +48,39 @@ const connect = (mapStateToProps = (state) => state, mapDispatchToProps) => (
 function Provider({ store, children }) {
   return <Context.Provider value={store}>{children}</Context.Provider>;
 }
-export { connect, Provider };
+
+/**
+ *  实现函数组件中使用 R-R-hook
+ * @param {Object} selector
+ */
+function useSelector(selector) {
+  const store = useStore();
+  const { getState, subscribe } = store;
+  const selectdState = selector(getState());
+  // ----------hook中需要订阅变更，写在useSelector中----------每次获取值的时候订阅一次
+
+  // dispatch后 更新组件中绑定的数据
+  //   这里实现了函数组件forceUpdate，可参考官网
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
+  //1 useEffect 有延迟，为了避免两次间隔之间store的改变，所以要使用layout
+  //2 useLayoutEffect
+  useLayoutEffect(() => {
+    const unsubscribe = subscribe(() => {
+      //   store state发生改变的时候再去执行,forceUpdate在类组件中有直接的api，但是如果函数组件应该如何来写？
+      forceUpdate();
+    });
+    return () => {
+      unsubscribe();
+    };
+  });
+  return selectdState;
+}
+function useDispatch() {
+  const store = useStore();
+  return store.dispatch;
+}
+function useStore() {
+  const store = useContext(Context);
+  return store;
+}
+export { connect, Provider, useSelector, useDispatch };
