@@ -10,7 +10,7 @@ export default function combineReducers(reducers) {
     }
     hasChanged =
       hasChanged || Object.keys(nextState).length !== Object.keys(state).length;
-    console.log(nextState, "===nextState");
+    // console.log(nextState, "===nextState");
     return hasChanged ? nextState : state;
   };
 }

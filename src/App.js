@@ -8,8 +8,8 @@ import BottomNav from "./components/BottomNav";
 import HocPage from "./pages/0725/HocPage";
 // import SetStatePage from "./components/Demo/SetStatePage";
 // import LifeCyclePage from "./components/Demo/LifeCyclePage";
-// import ReduxPage from "./components/Demo/ReduxPage";
-import HooksPage from "./components/Demo/HooksPage";
+import ReactReduxPage from "./components/Demo/ReactReduxPage";
+// import HooksPage from "./components/Demo/HooksPage";
 function App() {
   const [activeNum, setActiveNum] = useState(0);
   return (
@@ -22,8 +22,8 @@ function App() {
       {activeNum === 3 && <UserPage />}
       {/* <SetStatePage /> */}
       {/* <LifeCyclePage /> */}
-      {/* <ReduxPage /> */}
-      <HooksPage />
+      <ReactReduxPage />
+      {/* <HooksPage /> */}
       <BottomNav activeNum={activeNum} setActiveNum={setActiveNum} />
     </div>
   );
