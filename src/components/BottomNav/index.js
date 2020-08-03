@@ -4,7 +4,13 @@ import ContextPage from "../../pages/0725/ContextPage";
 import CartPage from "../../pages/CartPage";
 import OrderListPage from "../../pages/OrderListPage";
 import UserPage from "../../pages/UserPage";
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Link,
+  Switch,
+  Route,
+} from "../../source/my-react-router";
 const menu = [
   {
     title: "首页",
@@ -35,13 +41,27 @@ const menu = [
 // 接入路由
 export default class BottomNav extends Component {
   render() {
+    let active = 0;
+    let handleActive = (index) => {
+      active = index;
+      this.forceUpdate();
+    };
     return (
       <div>
         <Router>
           <div className={styles.main}>
             {menu.map((item, index) => {
               return (
-                <Link to={item.link} className={styles.MenuItem}>
+                <Link
+                  key={item.link}
+                  to={item.link}
+                  className={
+                    (active === index && styles.selected) +
+                    " " +
+                    styles.MenuItem
+                  }
+                  onClick={() => handleActive(index)}
+                >
                   <span className={"iconfont icon-" + item.icon}></span>
                   <span className={styles.title}>{item.title}</span>
                 </Link>
