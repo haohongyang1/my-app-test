@@ -10,6 +10,9 @@
   border-top: solid 1px #cdcdcd;
   align-items: center;
   color: #5d656b;
+  a {
+    text-decoration: none;
+  }
   .MenuItem {
     display: flex;
     flex-direction: column;
