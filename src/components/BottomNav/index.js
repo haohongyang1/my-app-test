@@ -4,12 +4,21 @@ import ContextPage from "../../pages/0725/ContextPage";
 import CartPage from "../../pages/CartPage";
 import OrderListPage from "../../pages/OrderListPage";
 import UserPage from "../../pages/UserPage";
-// import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Link,
+//   Switch,
+//   Route,
+//   Prompt,
+//   withRouter,
+// } from "react-router-dom";
 import {
   BrowserRouter as Router,
   Link,
-  Switch,
+  // Switch,
   Route,
+  Prompt,
+  withRouter,
 } from "../../source/my-react-router";
 const menu = [
   {
@@ -44,7 +53,7 @@ export default class BottomNav extends Component {
     let active = 0;
     let handleActive = (index) => {
       active = index;
-      this.forceUpdate();
+      // this.forceUpdate();
     };
     return (
       <div>
@@ -72,12 +81,18 @@ export default class BottomNav extends Component {
             <Link to="/product/123">商品</Link> */}
           </div>
           {/* 配置 */}
-          <Switch>
-            <Route exact path="/" component={ContextPage}></Route>
-            <Route path="/user" component={UserPage}></Route>
-            <Route path="/cart" component={CartPage}></Route>
-            <Route path="/list" component={OrderListPage}></Route>
-          </Switch>
+          {/* <Switch> */}
+          <Route exact path="/" component={ContextPage}></Route>
+          <Route path="/user" component={UserPage}></Route>
+          <Route path="/cart" component={CartPage}></Route>
+          <Route path="/product/:id" render={() => <Product />} />
+
+          <Route
+            path="/orderlist"
+            component={OrderListPage}
+            // render={() => <Product />}
+          ></Route>
+          {/* </Switch> */}
         </Router>
       </div>
     );
@@ -112,3 +127,30 @@ export default class BottomNav extends Component {
 //     </Link>
 //   );
 // }
+
+@withRouter
+class Product extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { confirm: true };
+    console.log("2222");
+  }
+
+  render() {
+    const { params } = this.props.match;
+    const { id } = params;
+    console.log("props", this.props); //sy-log
+    return (
+      <div>
+        Product:{id}
+        <Prompt
+          when={this.state.confirm}
+          message="Are you sure you want to leave?"
+          // message={(location) => {
+          //   return "Are you sure you want to leave-fun";
+          // }}
+        />
+      </div>
+    );
+  }
+}
