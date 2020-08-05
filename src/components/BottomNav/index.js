@@ -4,22 +4,22 @@ import ContextPage from "../../pages/0725/ContextPage";
 import CartPage from "../../pages/CartPage";
 import OrderListPage from "../../pages/OrderListPage";
 import UserPage from "../../pages/UserPage";
-// import {
-//   BrowserRouter as Router,
-//   Link,
-//   Switch,
-//   Route,
-//   Prompt,
-//   withRouter,
-// } from "react-router-dom";
 import {
   BrowserRouter as Router,
   Link,
-  // Switch,
+  Switch,
   Route,
   Prompt,
   withRouter,
-} from "../../source/my-react-router";
+} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Link,
+//   // Switch,
+//   Route,
+//   Prompt,
+//   withRouter,
+// } from "../../source/my-react-router";
 const menu = [
   {
     title: "首页",
